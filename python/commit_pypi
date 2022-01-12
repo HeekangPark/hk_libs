@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# activate kozip environment
+eval "$(conda shell.bash hook)"
+conda activate hk_utils
+
+# cd to the directory of this script
+cd "$(dirname "$0")"
+
+# build distribution
+rm -rf dist/*
+python setup.py bdist_wheel
+
+# upload to pypi
+twine upload dist/*
