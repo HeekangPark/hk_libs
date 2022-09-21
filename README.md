@@ -1,5 +1,5 @@
-# hk_utils
+# hk_libs
 
-Utility package for various languages by Heekang Park
+Libraries for various languages by Heekang Park
 
 - [Python](https://github.com/HeekangPark/hk_utils/tree/master/python)
