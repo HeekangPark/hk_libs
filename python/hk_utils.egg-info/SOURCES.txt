@@ -1,5 +1,6 @@
 README.md
 setup.py
+hk_utils/AttrDict.py
 hk_utils/__init__.py
 hk_utils/hk_print.py
 hk_utils.egg-info/PKG-INFO
