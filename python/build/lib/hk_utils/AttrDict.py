@@ -22,7 +22,17 @@ class AttrDict:
             return value
     
     def to_dict(self):
-        return self.__dict__
+        def _convert(value):
+            if type(value) == AttrDict:
+                return value.to_dict()
+            elif type(value) == list:
+                return [_convert(x) for x in value]
+            elif type(value) == set:
+                return {_convert(x) for x in value}
+            else:
+                return value
+            
+        return {key: _convert(value) for key, value in self.__dict__.items()}
 
     @classmethod
     def from_dict(cls, input):
@@ -79,6 +89,32 @@ class AttrDict:
     
     def __deepcopy__(self, memo):
         return AttrDict(self.__dict__)
+    
+    def __add__(self, other):
+        assert type(other) in [AttrDict, dict], f"invalid type {type(other)}: only AttrDict, dict are available"
+        if type(other) == dict:
+            other = AttrDict(other)
+        return AttrDict(self.__dict__.update(other.__dict__))
+    
+    def __iadd__(self, other):
+        assert type(other) in [AttrDict, dict], f"invalid type {type(other)}: only AttrDict, dict are available"
+        if type(other) == dict:
+            other = AttrDict(other)
+        self.__dict__.update(other.__dict__)
+        return self
+    
+    def __sub__(self, other):
+        assert type(other) in [AttrDict, dict], f"invalid type {type(other)}: only AttrDict, dict are available"
+        if type(other) == dict:
+            other = AttrDict(other)
+        return AttrDict({key: value for key, value in self.__dict__.items() if key not in other.__dict__})
+    
+    def __isub__(self, other):
+        assert type(other) in [AttrDict, dict], f"invalid type {type(other)}: only AttrDict, dict are available"
+        if type(other) == dict:
+            other = AttrDict(other)
+        self.__dict__ = {key: value for key, value in self.__dict__.items() if key not in other.__dict__}
+        return self
 
     def keys(self):
         return self.__dict__.keys()
@@ -88,3 +124,30 @@ class AttrDict:
     
     def items(self):
         return self.__dict__.items()
+    
+    def get(self, key, default=None):
+        return self.__dict__.get(key, default)
+    
+    def pop(self, key, default=None):
+        return self.__dict__.pop(key, default)
+    
+    def popitem(self):
+        return self.__dict__.popitem()
+    
+    def clear(self):
+        self.__dict__.clear()
+
+    def update(self, other):
+        assert type(other) in [AttrDict, dict], f"invalid type {type(other)}: only AttrDict, dict are available"
+        if type(other) == dict:
+            other = AttrDict(other)
+        self.__dict__.update(other.__dict__)
+
+    def setdefault(self, key, default=None):
+        return self.__dict__.setdefault(key, default)
+    
+    def copy(self):
+        return AttrDict(self.__dict__)
+    
+    def deepcopy(self):
+        return AttrDict(self.__dict__)
