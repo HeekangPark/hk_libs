@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="hk_utils",
-    version="1.1.6",
+    version="1.1.7",
     license="MIT",
     author="Heekang Park",
     author_email="park.heekang33@gmail.com",

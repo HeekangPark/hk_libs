@@ -43,18 +43,14 @@ class AttrDict:
     
     def __setattr__(self, key, value):
         assert type(key) in [int, str], f"invalid key type {type(key)} : only int, str are available"
-        if type(value) == dict:
-            value = AttrDict(value)
-        self.__dict__[key] = value
+        self.__dict__[key] = self._deep_convert(value)
         
     def __getitem__(self, key):
         return self.__dict__[key] if key in self.__dict__ else None
     
     def __setitem__(self, key, value):
         assert type(key) in [int, str], f"invalid key type {type(key)} : only int, str are available"
-        if type(value) == dict:
-            value = AttrDict(value)
-        self.__dict__[key] = value
+        self.__dict__[key] = self._deep_convert(value)
         
     def __delitem__(self, key):
         del self.__dict__[key]
