@@ -1,8 +1,15 @@
 Metadata-Version: 2.1
+<<<<<<< HEAD:python/hk_libs.egg-info/PKG-INFO
 Name: hk-libs
 Version: 1.2.0
 Summary: Python library by Heekang Park
 Home-page: https://github.com/HeekangPark/hk_libs
+=======
+Name: hk-utils
+Version: 1.1.7
+Summary: Python utilities by Heekang Park
+Home-page: https://github.com/HeekangPark/hk-utils
+>>>>>>> e4f8519ee9a47468a01ad136aeb37c812f3172b9:python/hk_utils.egg-info/PKG-INFO
 Author: Heekang Park
 Author-email: park.heekang33@gmail.com
 License: MIT
@@ -103,6 +110,7 @@ With `HKDict`, you can access dictionary keys with both dict-like syntax(ex. `x[
 ### v1.1
 
 - `AttrDict` 모듈 추가
+<<<<<<< HEAD:python/hk_libs.egg-info/PKG-INFO
 
 ### v1.2
 
@@ -110,3 +118,5 @@ With `HKDict`, you can access dictionary keys with both dict-like syntax(ex. `x[
 - file name 변경 : AttrDict.py -> HKDict.py, hk_print.py -> HKPrint.py
 - class name 변경 : AttrDict -> HKDict
 - HKDict 기능 추가, 버그 수정
+=======
+>>>>>>> e4f8519ee9a47468a01ad136aeb37c812f3172b9:python/hk_utils.egg-info/PKG-INFO
