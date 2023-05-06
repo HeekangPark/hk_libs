@@ -1,6 +1,6 @@
-# hk_utils [PYTHON]
+# hk_libs [PYTHON]
 
-Python 유틸리티 패키지
+간단한 python 라이브러리 모음
 
 by Heekang Park
 
@@ -11,15 +11,15 @@ by Heekang Park
 ## Installation
 
 ```bash
-pip install hk_utils
+pip install hk_libs
 ```
 
 ## Documentation
 
-### hk_utils.print
+### hk_libs.print
 
 ```python
-from hk_utils import print
+from hk_libs import print
 
 print("Hello World!")
 print.success("Success!")
@@ -37,12 +37,12 @@ You can still use `print` as usual as well.
 
 한편 여전히 일반적인 용도로 `print` 함수를 사용할 수도 있습니다.
 
-### hk_utils.AttrDict
+### hk_libs.HKDict
 
 ```python
-from hk_utils import AttrDict
+from hk_libs import HKDict
 
-x = AttrDict.from_dict({
+x = HKDict.from_dict({
     "a": 1,
     "b": 2,
     "c": {
@@ -71,13 +71,13 @@ print(x.f[10].i) # 7
 print(x.f[10]["j"]) # 8
 ```
 
-Wih `AttrDict`, you can access dictionary keys with both dict-like syntax(ex. `x["a"]`) and object-like syntax(ex. `x.a`).
+With `HKDict`, you can access dictionary keys with both dict-like syntax(ex. `x["a"]`) and object-like syntax(ex. `x.a`).
 
-`AttrDict` automatically convert nested dictionary as instance as well.
+`HKDict` automatically convert nested dictionary as instance as well.
 
-`AttrDict`를 사용하면, `dict`와 유사한 문법(ex. `x["a"]`)과 객체와 유사한 문법(ex. `x.a`)을 모두 사용할 수 있습니다.
+`HKDict`를 사용하면, `dict`와 유사한 문법(ex. `x["a"]`)과 객체와 유사한 문법(ex. `x.a`)을 모두 사용할 수 있습니다.
 
-또한, 중첩된 `dict`도 자동으로 `AttrDict` 인스턴스로 변환합니다.
+또한, 중첩된 `dict`도 자동으로 `HKDict` 인스턴스로 변환합니다.
 
 ## Changelog
 
@@ -89,3 +89,10 @@ Wih `AttrDict`, you can access dictionary keys with both dict-like syntax(ex. `x
 ### v1.1
 
 - `AttrDict` 모듈 추가
+
+### v1.2
+
+- package name 변경 : hk_utils -> hk_libs
+- file name 변경 : AttrDict.py -> HKDict.py, hk_print.py -> HKPrint.py
+- class name 변경 : AttrDict -> HKDict
+- HKDict 기능 추가, 버그 수정

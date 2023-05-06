@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# activate kozip environment
+# activate hk_libs environment
 eval "$(conda shell.bash hook)"
-conda activate hk_utils
+conda activate hk_libs
 
 # cd to the directory of this script
 cd "$(dirname "$0")"
