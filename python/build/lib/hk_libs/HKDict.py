@@ -126,9 +126,8 @@ class HKDict:
     
     def __iadd__(self, other):
         assert type(other) in [HKDict, dict], f"invalid type {type(other)}: only HKDict, dict are available"
-        if isinstance(other, dict):
-            other = HKDict.from_dict(other)
-        self.__dict__ = {**self.__dict__, **other.__dict__}
+        for key in other:
+            self[key] = other[key]
         return self
     
     def __sub__(self, other):
@@ -139,9 +138,9 @@ class HKDict:
     
     def __isub__(self, other):
         assert type(other) in [HKDict, dict], f"invalid type {type(other)}: only HKDict, dict are available"
-        if isinstance(other, dict):
-            other = HKDict.from_dict(other)
-        self.__dict__ = {key: value for key, value in self.__dict__.items() if key not in other.__dict__}
+        for key in other:
+            if key in self:
+                del self[key]
         return self
 
     @staticmethod
